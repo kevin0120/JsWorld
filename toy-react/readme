@@ -1,0 +1,19 @@
+1.npm init  生成package.json文件
+2. JSX  在js中写html对象 例如:const element = <h1>Hello, world!</h1>;
+
+    <div /> 翻译成    React.createElement('div')
+    该翻译过程 由babol插件 或者webpack完成
+
+3. webpack配置
+https://www.cnblogs.com/limitcode/p/7906447.html
+npm install moduleName # 安装模块到项目目录下
+npm install -g moduleName # -g 的意思是将模块安装到全局，具体安装到磁盘哪个位置，要看 npm config prefix 的位置。
+npm install -save moduleName # -save 的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖。
+npm install -save-dev moduleName # -save-dev 的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。
+
+
+    安装:npm install webpack webpack-cli --save-dev
+    作用 :把require和import打包成一个文件,并且在打包过程可以加插件和逻辑
+          bable:新版本的js翻译成旧版本的js,以loader来定制  css:css_loader html:html_loader
+
+4 webpack 打包 npx webpack

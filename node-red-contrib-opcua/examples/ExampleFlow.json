@@ -1,0 +1,422 @@
+[
+  {
+    "type": "tab",
+    "id": "3e32b2a4.2fb10e",
+    "label": "TEST OPC UA"
+  },
+  {
+    "id": "7290d8b0.f713d8",
+    "type": "OpcUa-Endpoint",
+    "endpoint": "opc.tcp://localhost:62544/Quickstarts/AlarmConditionServer",
+    "login": false
+  },
+  {
+    "id": "a49d5667.ad0348",
+    "type": "OpcUa-Client",
+    "z": "3e32b2a4.2fb10e",
+    "endpoint": "7290d8b0.f713d8",
+    "action": "browse",
+    "time": "",
+    "name": "Test server (browse)",
+    "x": 340,
+    "y": 120,
+    "wires": [
+      [
+        "953a0ae5.f24f18",
+        "a3410f1c.a3d45"
+      ]
+    ]
+  },
+  {
+    "id": "5a8e289.84101d8",
+    "type": "OpcUa-Item",
+    "z": "3e32b2a4.2fb10e",
+    "item": "ns=4;s=free_memory",
+    "datatype": "opcua.DataType.Double",
+    "value": "",
+    "name": "FreeMemory",
+    "x": 370,
+    "y": 340,
+    "wires": [
+      [
+        "ed1b127f.79c5a"
+      ]
+    ]
+  },
+  {
+    "id": "d870ab21.de1068",
+    "type": "OpcUa-Item",
+    "z": "3e32b2a4.2fb10e",
+    "item": "ns=1;i=1001",
+    "datatype": "opcua.DataType.Double",
+    "value": "66.6",
+    "x": 360,
+    "y": 500,
+    "wires": [
+      [
+        "51a4a2b5.4fde4c"
+      ]
+    ]
+  },
+  {
+    "id": "fea7ccd.1d4a73",
+    "type": "inject",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Read",
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 190,
+    "y": 340,
+    "wires": [
+      [
+        "5a8e289.84101d8"
+      ]
+    ]
+  },
+  {
+    "id": "cbb7cbd9.057e28",
+    "type": "inject",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Write",
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 190,
+    "y": 500,
+    "wires": [
+      [
+        "d870ab21.de1068"
+      ]
+    ]
+  },
+  {
+    "id": "e067d795.cdf288",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Write value",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 910,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "2776cbf5.8748e4",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Read value",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 910,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "3d20140c.02bf8c",
+    "type": "OpcUa-Item",
+    "z": "3e32b2a4.2fb10e",
+    "item": "ns=4;b=1020ffaa",
+    "datatype": "opcua.DataType.Double",
+    "value": "",
+    "x": 360,
+    "y": 380,
+    "wires": [
+      [
+        "ed1b127f.79c5a"
+      ]
+    ]
+  },
+  {
+    "id": "12a9bc28.b04744",
+    "type": "inject",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Read",
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 190,
+    "y": 380,
+    "wires": [
+      [
+        "3d20140c.02bf8c"
+      ]
+    ]
+  },
+  {
+    "id": "ed1b127f.79c5a",
+    "type": "OpcUa-Client",
+    "z": "3e32b2a4.2fb10e",
+    "endpoint": "7290d8b0.f713d8",
+    "action": "read",
+    "time": "",
+    "name": "Test server (read items)",
+    "x": 630,
+    "y": 360,
+    "wires": [
+      [
+        "2776cbf5.8748e4"
+      ]
+    ]
+  },
+  {
+    "id": "7b3b26f.cb9c1d8",
+    "type": "OpcUa-Item",
+    "z": "3e32b2a4.2fb10e",
+    "item": "ns=1;i=1001",
+    "datatype": "opcua.DataType.Double",
+    "value": "",
+    "x": 360,
+    "y": 460,
+    "wires": [
+      [
+        "f9ade43a.99e918"
+      ]
+    ]
+  },
+  {
+    "id": "dafeb7f9.a570e8",
+    "type": "inject",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Subscribe (100ms)",
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 150,
+    "y": 460,
+    "wires": [
+      [
+        "7b3b26f.cb9c1d8"
+      ]
+    ]
+  },
+  {
+    "id": "546cadf.3a79a54",
+    "type": "inject",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Browse",
+    "topic": "ns=1;i=1000",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 90,
+    "y": 100,
+    "wires": [
+      [
+        "ac505af2.c46cf8",
+        "a49d5667.ad0348"
+      ]
+    ]
+  },
+  {
+    "id": "29917983.7fe8f6",
+    "type": "file",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Address.txt",
+    "filename": "./public/Address.txt",
+    "appendNewline": true,
+    "overwriteFile": false,
+    "x": 750,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "953a0ae5.f24f18",
+    "type": "function",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Items",
+    "func": "msg.payload=msg.browseName+\"|\"+msg.topic;\nreturn msg;",
+    "outputs": 1,
+    "x": 570,
+    "y": 120,
+    "wires": [
+      [
+        "29917983.7fe8f6",
+        "abe19393.892f8"
+      ]
+    ]
+  },
+  {
+    "id": "ac505af2.c46cf8",
+    "type": "trigger",
+    "z": "3e32b2a4.2fb10e",
+    "op1": "object|address",
+    "op2": "0",
+    "op1type": "val",
+    "op2type": "",
+    "duration": "0",
+    "extend": "false",
+    "units": "ms",
+    "name": "Clear file",
+    "x": 380,
+    "y": 60,
+    "wires": [
+      [
+        "c73aab1d.28e818"
+      ]
+    ]
+  },
+  {
+    "id": "c73aab1d.28e818",
+    "type": "file",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Address.txt",
+    "filename": "./public/Address.txt",
+    "appendNewline": true,
+    "overwriteFile": true,
+    "x": 750,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "51a4a2b5.4fde4c",
+    "type": "OpcUa-Client",
+    "z": "3e32b2a4.2fb10e",
+    "endpoint": "7290d8b0.f713d8",
+    "action": "write",
+    "time": "",
+    "name": "Test server (write items)",
+    "x": 630,
+    "y": 500,
+    "wires": [
+      [
+        "e067d795.cdf288"
+      ]
+    ]
+  },
+  {
+    "id": "f9ade43a.99e918",
+    "type": "OpcUa-Client",
+    "z": "3e32b2a4.2fb10e",
+    "endpoint": "7290d8b0.f713d8",
+    "action": "subscribe",
+    "time": "6",
+    "timeUnit": "s",
+    "name": "Test server (subscribe item)",
+    "x": 620,
+    "y": 460,
+    "wires": [
+      [
+        "3ea9409a.7a155"
+      ]
+    ]
+  },
+  {
+    "id": "3ea9409a.7a155",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Subscribed values",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 930,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "abe19393.892f8",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Address items",
+    "active": false,
+    "console": "false",
+    "complete": "false",
+    "x": 760,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "c4992ccd.8d67",
+    "type": "comment",
+    "z": "3e32b2a4.2fb10e",
+    "name": "v9",
+    "info": "Browse node allows user to select item:\n- runtime browse\n- select RootFolder -> SubFolder\n- select Item\n\nActions:\nread\nwrite\nbrowse\nsubscribe\n\nNodes:\nclient node for actions\nitem node for defining item\n",
+    "x": 910,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "a3410f1c.a3d45",
+    "type": "template",
+    "z": "3e32b2a4.2fb10e",
+    "name": "OpcUa-Item",
+    "field": "payload",
+    "template": "[{\"id\":\"4b12ca9b.e7e184\",\"type\":\"OpcUaItem\",\"item\":\"{{topic}}\",\"datatype\":\"opcua.DataType.Double\",\"value\":\"66.6\",\"name\":\"{{browseName}}\",\"x\":251,\"y\":334,\"z\":\"30ffd2ee.59fdd6\",\"wires\":[[\"70dd1397.3c8e44\"]]}]",
+    "x": 550,
+    "y": 240,
+    "wires": [
+      [
+        "59bdb146.0cb58",
+        "9180d5b.c8ccd28"
+      ]
+    ]
+  },
+  {
+    "id": "59bdb146.0cb58",
+    "type": "function",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Save to lib",
+    "func": "msg.filename=\"./lib/templates/OPCUA/\"+msg.browseName+\".js\";\nmsg.payload=\"// name: \"+msg.browseName+\"\\n\"+\"// field: payload\\n\"+msg.payload;\n\nreturn msg;",
+    "outputs": 1,
+    "x": 750,
+    "y": 240,
+    "wires": [
+      [
+        "444e63f9.eb3bac",
+        "4ceed8c1.a2b5a8"
+      ]
+    ]
+  },
+  {
+    "id": "444e63f9.eb3bac",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "Pre-configured library items",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 980,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "4ceed8c1.a2b5a8",
+    "type": "file",
+    "z": "3e32b2a4.2fb10e",
+    "name": "OPC UA Items",
+    "filename": "",
+    "appendNewline": true,
+    "overwriteFile": true,
+    "x": 940,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "9180d5b.c8ccd28",
+    "type": "debug",
+    "z": "3e32b2a4.2fb10e",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 750,
+    "y": 200,
+    "wires": []
+  }
+]

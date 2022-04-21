@@ -1,0 +1,16 @@
+[
+  {
+    "id": "c550b417.772448",
+    "type": "OpcUa-Item",
+    "z": "2d7df531.bb6c6a",
+    "item": "{{topic}}",
+    "datatype": "opcua.DataType.Double",
+    "value": "66.6",
+    "name": "{{browseName}}",
+    "x": 340,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  }
+]
